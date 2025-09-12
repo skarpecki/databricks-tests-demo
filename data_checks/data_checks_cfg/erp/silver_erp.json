@@ -1,0 +1,18 @@
+[{
+    "catalog": "silver",
+    "schema": "erp",
+    "table": "customer",
+    "data_checks": [{
+        "sql": "FIRSTNAME IS NULL",
+        "message": "First name cannot be NULL"
+      }, {
+        "sql": "FIRSTNAME = ''",
+        "message": "First name cannot be empty"
+      }, {
+        "sql": "EMAIL IS NULL",
+        "message": "Email cannot be NULL"
+      }, {
+        "sql": "EMAIL = ''",
+        "message": "Email cannot be empty"
+      }]
+  }]
