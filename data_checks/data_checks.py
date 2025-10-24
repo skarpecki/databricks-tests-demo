@@ -35,7 +35,8 @@ def load_data_checks(
 
     :returns Datacheck - DataCheck configuration object for the specified table.
     """
-    cfg_path = f"file:{os.path.abspath(f"./data_checks_cfg/{source_system}")}"
+    # If using the code deploy it to Volume
+    cfg_path = f"file:{os.path.abspath(f'./data_checks_cfg/{source_system}')}"
     df = spark.read.option("multiline", "true").json(f"{cfg_path}/*.json")
 
     df = df.filter(

@@ -9,7 +9,7 @@ param_obj_name = 'customer' # hard-coded object name
 dbutils.widgets.dropdown(
     "param_format",
     "parquet",
-    ["parquet", "orc", "csv", "json", "avro", "delta", "text", "hive", "jdbc"],
+    ["parquet", "json", "avro"],
     "Format"
 )
 param_format = dbutils.widgets.get("param_format")
@@ -127,7 +127,7 @@ files = detect_files(
 from concurrent.futures import ThreadPoolExecutor
 from schemas import customer_schema
 
-# Usually we'll take schema fro bronze
+# Usually we'll take schema for bronze
 # bronze_df = spark.read.table(f"cdp_temporary_dev.tmp.bronze_customer")
 # contract_schema = bronze_df.schema
 

@@ -7,7 +7,7 @@
 dbutils.widgets.dropdown(
     "param_format",
     "parquet",
-    ["parquet", "orc", "csv", "json", "avro", "delta", "text", "hive", "jdbc"],
+    ["parquet", "json", "avro"],
     "Format"
 )
 param_format = dbutils.widgets.get("param_format")
