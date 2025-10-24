@@ -27,17 +27,16 @@ def load_data_checks(
     """
     Reads data check configuration for a specific table from JSON files.
 
-    Args:
-        spark: SparkSession object.
-        source_system (str): Name of the source system.
-        catalog (str): Catalog name.
-        schema (str): Schema name.
-        table (str): Table name.
+    :param spark - SparkSession object.
+    :param source_system - Name of the source system.
+    :param catalog - Catalog name.
+    :param schema - Schema name.
+    :param table - Table name.
 
-    Returns:
-        DataCheck: DataCheck configuration object for the specified table.
+    :returns Datacheck - DataCheck configuration object for the specified table.
     """
-    cfg_path = f"file:{os.path.abspath(f"./data_checks_cfg/{source_system}")}"
+    # If using the code deploy it to Volume
+    cfg_path = f"file:{os.path.abspath(f'./data_checks_cfg/{source_system}')}"
     df = spark.read.option("multiline", "true").json(f"{cfg_path}/*.json")
 
     df = df.filter(
@@ -46,6 +45,8 @@ def load_data_checks(
         (F.col("table") == table)
     )
 
+    # Assuming there is exactly a single row for a config
+    # To productionize make some checks here and verbose exceptions
     row = df.first()
 
     data_check = DataCheck(
@@ -66,15 +67,15 @@ def apply_data_checks(df: DataFrame, cfg: DataCheck) -> DataFrame:
     to the `fail_messages` column. Only rows with at least one failure 
     message are returned.
 
-    Args:
-        df (DataFrame): Input Spark DataFrame.
-        cfg (DataCheck): Configuration object containing a list of 
-            data checks (each with `sql` and `message`).
+    :param df (DataFrame): Input Spark DataFrame.
+    :param cfg (DataCheck): Configuration object containing a list of 
+        data checks (each with `sql` and `message`).
 
-    Returns:
-        DataFrame: DataFrame containing only rows that failed one or more checks, 
+    :returns DataFrame: DataFrame containing only rows that failed one or more checks, 
         with a `fail_messages` column listing the reasons.
     """
+
+    # Prepare array of checks
     checks = F.array(*[
         F.struct(
             F.expr(check.sql).alias("fail"),
@@ -83,8 +84,12 @@ def apply_data_checks(df: DataFrame, cfg: DataCheck) -> DataFrame:
         for check in cfg.data_checks
     ])
     
+    # Base empty arrary for fail messafes
     empty = F.expr("cast(array() as array<string>)")
 
+    # Aggegate will go over checks array and apply it
+    # with when(...).otherwise(...). If clause is checked
+    # it adds message to the messages array.
     fail_messages = F.aggregate(
         checks,
         empty,
@@ -94,6 +99,7 @@ def apply_data_checks(df: DataFrame, cfg: DataCheck) -> DataFrame:
             ).otherwise(acc)
     )
 
+    # Return incorrect rows - where fail_message is filled
     return (
         df.withColumn("fail_messages", fail_messages)
           .where(F.size("fail_messages") > 0)
