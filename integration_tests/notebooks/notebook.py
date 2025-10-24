@@ -3,7 +3,7 @@
 # Notebook before refactor - usage of %run, code all around places
 # COMMAND ----------
 
-# MAGIC %run "../utils" 
+# MAGIC %run "../utils"
 
 # COMMAND ----------
 
@@ -45,7 +45,7 @@ df_dedup = (
 
 cols_except_city = [
     c for c
-    in df_dedup.columns 
+    in df_dedup.columns
     if c != "city"
 ]
 

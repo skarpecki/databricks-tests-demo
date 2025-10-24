@@ -18,10 +18,10 @@ class DataCheck:
 
 
 def load_data_checks(
-    spark, 
-    source_system: str, 
-    catalog: str, 
-    schema: str, 
+    spark,
+    source_system: str,
+    catalog: str,
+    schema: str,
     table: str
 ) -> DataCheck:
     """
