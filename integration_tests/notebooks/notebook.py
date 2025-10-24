@@ -21,20 +21,7 @@ from delta.tables import DeltaTable
 df_users_bronze = spark.read.table(src_table)
 df_city_cfg     = spark.read.table("raw.sap.city_mappings")
 
-w = (Window
-    .partitionBy("id")
-    .orderBy(F.col("effective_date")
-    .desc()))
-
-df_dedup = (
-    df_users_bronze
-        .withColumn(
-            "rn",
-            F.row_number().over(w)
-        )
-        .where(F.col("rn") == 1)
-        .drop("rn")
-)
+df_dedup = deduplicate_df(df_users_bronze, "id", "effective_date")
 
 df_dedup = (
     df_dedup.where(
