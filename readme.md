@@ -1,5 +1,7 @@
 # Databricks Testing Solution - Demo
 
+![tests](media/tests_hierarchy.png)
+
 ## Content
 
 This reposiotory contains samples on how can automated testing be performed on analytical platform based on Spark, especially Databricks.

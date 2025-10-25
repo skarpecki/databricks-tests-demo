@@ -1,5 +1,7 @@
 # Data Checks
 
+![tests](../media/tests_hierarchy_quality_checks.png)
+
 ## Content
 
 This catalog contain sample idea on how to apply SQL data checks within Databricks platform. 

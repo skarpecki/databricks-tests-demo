@@ -1,5 +1,7 @@
 # Integration tests
 
+![tests](../media/tests_hierarchy_integration.png)
+
 ## Content
 
 This catalog contains sample integrations tests of Databricks notebooks. You'll need Python in version at least 3.11 to run provided code. Additionaly
