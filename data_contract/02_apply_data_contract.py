@@ -21,7 +21,6 @@ param_format = dbutils.widgets.get("param_format")
 
 # COMMAND ----------
 
-from pyspark.testing.utils import assertSchemaEqual
 from pyspark.sql.functions import col
 import re
 import os
@@ -124,6 +123,7 @@ files = detect_files(
 
 # COMMAND ----------
 
+from pyspark.testing.utils import assertSchemaEqual
 from concurrent.futures import ThreadPoolExecutor
 from schemas import customer_schema
 
