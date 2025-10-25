@@ -1,6 +1,6 @@
 # Databricks notebook source
-
 # Notebook before refactor - usage of %run, code all around places
+
 # COMMAND ----------
 
 # MAGIC %run "../utils"
@@ -18,11 +18,11 @@ from pyspark.sql import Window
 from delta.tables import DeltaTable
 
 # Source tables
-df_users_bronze = spark.read.table(src_table)
-df_city_cfg     = spark.read.table("raw.sap.city_mappings")
+df_src      = spark.read.table(src_table)
+df_city_cfg = spark.read.table("raw.sap.city_mappings")
 
 df_dedup = deduplicate_df(
-   df_users_bronze,
+   df_src,
    partition_by_cols="id",
    order_by_cols="effective_date"
 )
