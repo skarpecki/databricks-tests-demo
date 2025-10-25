@@ -1,6 +1,6 @@
 # Databricks Testing Solution - Demo
 
-![tests](media/tests_hierarchy.png)
+![tests](.media/tests_hierarchy.png)
 
 ## Content
 
@@ -11,6 +11,8 @@ You can find multiple tests approaches, each withing it's own catalog:
 - **data_contract** - data contract solution comparing source raw files with schema of target Delta Lake table
 - **integration_tests** - testing Databricks notebooks as a whole
 - **unit_tests** - test each module, function as in *traditional* software testing
+- **.media** - diagrams
+- **readme.md** - this file
 
 ## How to use
 

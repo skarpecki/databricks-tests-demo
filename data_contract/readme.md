@@ -1,6 +1,6 @@
 # Data Contracts
 
-![tests](../media/tests_hierarchy_contract.png)
+![tests](../.media/tests_hierarchy_contract.png)
 
 ## Content
 

@@ -1,6 +1,6 @@
 # Unit tests
 
-![tests](../media/tests_hierarchy_unit.png)
+![tests](../.media/tests_hierarchy_unit.png)
 
 
 ## Content

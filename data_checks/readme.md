@@ -1,6 +1,6 @@
 # Data Checks
 
-![tests](../media/tests_hierarchy_quality_checks.png)
+![tests](../.media/tests_hierarchy_quality_checks.png)
 
 ## Content
 
