@@ -1,6 +1,5 @@
 # Data Contracts
 
-
 ## Content
 
 This catalog contain sample idea on how to use data contracts within Databricks platform for loading data from 

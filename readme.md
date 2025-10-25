@@ -1,6 +1,5 @@
 # Databricks Testing Solution - Demo
 
----
 ## Content
 
 This reposiotory contains samples on how can automated testing be performed on analytical platform based on Spark, especially Databricks.
@@ -10,8 +9,6 @@ You can find multiple tests approaches, each withing it's own catalog:
 - **data_contract** - data contract solution comparing source raw files with schema of target Delta Lake table
 - **integration_tests** - testing Databricks notebooks as a whole
 - **unit_tests** - test each module, function as in *traditional* software testing
-
---- 
 
 ## How to use
 
