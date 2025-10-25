@@ -1,8 +1,4 @@
 # Databricks notebook source
-# Notebook before refactor - usage of %run, code all around places
-
-# COMMAND ----------
-
 # MAGIC %run "../utils"
 
 # COMMAND ----------
