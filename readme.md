@@ -13,7 +13,7 @@ You can find multiple tests approaches, each withing it's own catalog:
 
 --- 
 
-## How to use that
+## How to use
 
 Each catalog lives as a whole component which can be run either in Databricks or locally. In each of them you'll find 
 a readme.md file which guides through the usage. The whole repo is under MIT license, thus feel free to use it even in commrecial solutions. Just please leave a star :pleading_face:
