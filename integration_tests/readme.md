@@ -1,6 +1,6 @@
 # Integration tests
 
-![tests](../media/tests_hierarchy_integration.png)
+![tests](../.media/tests_hierarchy_integration.png)
 
 ## Content
 
